@@ -1,0 +1,95 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:sec="http://www.springframework.org/security/facelets/tags"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+				xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                template="../WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Admin Page - <span class="subitem">Admin Page</span>
+    </ui:define>
+    
+    
+
+    <ui:define name="description">
+        This is the Admin Page.
+    </ui:define>
+
+    <ui:define name="implementation">
+		
+		<h2>Back Button</h2>
+		<h:form>
+			<p:commandButton value="Back Button" onclick="window.history.back();"/>
+		</h:form>
+		
+		<h2>Logged User</h2>
+		<p:panel>
+			<h:outputText value="hello #{userBean.username}" />
+		</p:panel>
+	
+		<h2>Logout Button</h2>
+		<h:form onsubmit="this.action='#{request.contextPath}/logout';">
+			<p:commandButton value="Logout Button" ajax="false" />
+		</h:form>
+		
+		<h2>Logout Link</h2>
+		<p:link value="Logout Link" href="#{request.contextPath}/logout" />
+		
+		<h2>Roles</h2>
+		<p:panel>
+			<sec:ifAnyGranted roles="ROLE_ADMIN">
+				<h:outputText value="YOU HAVE ADMIN ROLE" />
+			</sec:ifAnyGranted>
+			<br />
+			<sec:ifAnyGranted roles="ROLE_USER">
+				<h:outputText value="YOU HAVE USER ROLE" />
+			</sec:ifAnyGranted>
+		</p:panel>
+		
+		<h2>Icons</h2>
+		<i class="pi pi-check"></i>
+		<i class="pi pi-times"></i>
+		
+		<span class="pi pi-check"></span>
+		
+		<i class="ui-icon-person"></i>
+		<p:commandButton value="Icon" icon="ui-icon-person" />
+        <span class="ui-icon-person"></span>
+        
+        <i class="pi pi-spin pi-spinner" style="font-size: 3em"></i>
+        
+        <h:form>
+	        <p:menu>
+				<p:menuitem value="User" icon="ui-icon-person" />
+				<p:menuitem value="User" icon="pi pi-check" />
+			</p:menu>
+        </h:form>
+        
+        <h3 style="margin-top:0">Buttons</h3>
+		<p:commandButton value="Edit" icon="fa fa-fw fa-edit" type="button"/>
+		<p:commandButton value="Remove" icon="fa fa-fw fa-remove" type="button"/>
+		<p:commandButton value="Download" icon="fa fa-fw fa-download" type="button"/>
+        
+        <h1>Icons: https://www.primefaces.org/showcase/ui/misc/fa.xhtml</h1>
+        
+        <p:themeSwitcher id="advanced" style="width:165px" effect="fade" var="t">
+            <f:selectItem itemLabel="Choose Theme" itemValue="#{null}" />
+            <f:selectItems value="#{themeSwitcherView.themes}" var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" />
+ 
+            <p:column>
+                <h:outputText styleClass="ui-theme ui-theme-#{t.name}" style="display-block" />
+            </p:column>
+ 
+            <p:column>
+                #{t.displayName}
+            </p:column>
+        </p:themeSwitcher>
+        
+    </ui:define>
+
+    
+
+</ui:composition>
