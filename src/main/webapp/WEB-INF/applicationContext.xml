@@ -46,9 +46,9 @@
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="driverClass" value="org.postgresql.Driver" />
 		
-		<property name="jdbcUrl" value="jdbc:postgresql://ec2-54-225-119-13.compute-1.amazonaws.com:5432/dfb9n8vo6f2099?useSSL=true"/>
-		<property name="user" value="pzisxgttyanlhy" />
-		<property name="password" value="f8149e3964f4f68f3b1253f0ce0f5379839744fbaac70bf01c7f5ec0797182c0" />
+		<property name="jdbcUrl" value="jdbc:postgresql://ec2-54-197-239-115.compute-1.amazonaws.com:5432/d58tn038n7neqf?useSSL=true"/>
+		<property name="user" value="wxuxisinbjabcb" />
+		<property name="password" value="9558dc6a958706640bea8a743f6a83c5cdd607e39209a56d80f8770dca461325" />
 		
 		<property name="minPoolSize" value="3" />
 	    <property name="maxPoolSize" value="30" />
@@ -70,8 +70,8 @@
 		<property name="jpaProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
-<!--                 <prop key="hibernate.hbm2ddl.auto">create</prop> -->
-                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                 <prop key="hibernate.hbm2ddl.auto">create</prop>
+<!--                <prop key="hibernate.hbm2ddl.auto">update</prop> -->
             </props>
         </property>
 	</bean>
