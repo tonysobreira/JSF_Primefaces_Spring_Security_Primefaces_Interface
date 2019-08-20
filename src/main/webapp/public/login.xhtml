@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Spring 5 Security + JSF 2.2 + PrimeFaces 7 Integration Example</title>
+</h:head>
+<h:body>
+
+	<h1>Login</h1>
+	
+	<h:form id="loginForm" prependId="false">
+	
+		<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+	
+	 	<p:panelGrid columns="2" cellpadding="5">
+	 	
+	 		<p:outputLabel value="Login failed!" styleClass="red" rendered="${!empty param['error']}" />
+	 		
+            <p:outputLabel for="email" value="Email:" />
+            <p:inputText id="email" value="#{loginBean.email}" required="true" label="email" />
+             
+            <p:outputLabel for="password" value="Password:" />
+            <p:password id="password" value="#{loginBean.password}" required="true" label="password" />
+             
+            <f:facet name="footer">
+                <p:commandButton id="login" value="Login" update="growl" action="#{loginBean.login()}" />
+            </f:facet>  
+        </p:panelGrid>
+		
+	</h:form>
+	
+	<br />
+	
+	<h1>Register</h1>
+	
+	<p:link value="Register" outcome="/public/register.xhtml" />
+		
+</h:body>
+</html>

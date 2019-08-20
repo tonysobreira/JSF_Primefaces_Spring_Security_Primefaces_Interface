@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+
+<h:head>
+	<title>Test</title>
+</h:head>
+
+<h:body>
+	<h:form prependId="false">
+		<p:link value="Home" outcome="/index.xhtml" />
+		<br />
+		<br />
+		<p:outputLabel value="Test" />
+		<br />
+		<br />
+		<p:commandButton value="Ok" />
+		
+		<sec:isAuthenticated>
+		auth
+		</sec:isAuthenticated>
+		<sec:isAnonymous>
+		123
+		</sec:isAnonymous>
+
+	</h:form>
+</h:body>
+</html>
